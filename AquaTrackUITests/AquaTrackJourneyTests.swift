@@ -22,10 +22,15 @@ final class AquaTrackJourneyTests: XCTestCase {
 
         let row = app.staticTexts["2.5 oz"].firstMatch
         if !row.isHittable { app.swipeUp() }
-        XCTAssertTrue(row.waitForExistence(timeout: 5))
-        row.swipeLeft()
+        XCTAssertTrue(row.isHittable)
+        let origin = app.coordinate(withNormalizedOffset: .zero)
+        let y = row.frame.midY - app.frame.minY
+        let leading = origin.withOffset(CGVector(dx: app.frame.width * 0.38, dy: y))
+        let trailing = origin.withOffset(CGVector(dx: app.frame.width * 0.87, dy: y))
+        trailing.press(forDuration: 0.05, thenDragTo: leading)
         let delete = app.buttons["Delete"]
-        if delete.exists { delete.tap() }
+        XCTAssertTrue(delete.waitForExistence(timeout: 5))
+        delete.tap()
         if !total.isHittable { app.swipeDown() }
         XCTAssertEqual(amount(in: total.label), start + 8)
 
