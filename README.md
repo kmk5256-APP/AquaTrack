@@ -14,11 +14,11 @@ A simple, polished iOS water intake tracking app built with SwiftUI by **Ai2Life
 ## Intended App Store Price
 **$0.99** (one-time purchase)
 
-## How to Build
-1. Clone this repository
-2. Open `AquaTrack.xcodeproj` in Xcode 15+ (or create a new iOS App project named AquaTrack and replace the source files)
-3. Select your development team
-4. Build and run on simulator or device (iOS 17+)
+## Build and Test
+
+Open `AquaTrack.xcodeproj`, select the AquaTrack scheme, and choose an iPhone or iPad simulator. Run the app with **Product > Run** and the regression tests with **Product > Test**. The app targets iOS and iPadOS 17 or later and builds with Xcode 27.2.
+
+For a signed device or App Store build, choose your Apple Developer team in the app target's Signing & Capabilities tab.
 
 ## Project Structure
 - `AquaTrackApp.swift` – App entry point

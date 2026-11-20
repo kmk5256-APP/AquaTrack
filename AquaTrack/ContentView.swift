@@ -2,158 +2,195 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var viewModel = WaterTrackerViewModel()
-    @State private var customAmount: String = ""
+    @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.locale) private var locale
+    @Environment(\.dynamicTypeSize) private var typeSize
+    @Environment(\.accessibilityReduceMotion) private var reduceMotion
+    @FocusState private var editingAmount: Bool
+    @State private var customAmount = ""
     @State private var showingGoalSheet = false
-    
+    @State private var showingAmountError = false
+
+    private var amount: Double? { WaterTrackerViewModel.parseOunces(customAmount, locale: locale) }
+
     var body: some View {
         NavigationStack {
-            VStack(spacing: 24) {
-                // Progress Ring
-                ZStack {
-                    Circle()
-                        .stroke(Color.blue.opacity(0.2), lineWidth: 20)
-                        .frame(width: 200, height: 200)
-                    
-                    Circle()
-                        .trim(from: 0, to: viewModel.progress)
-                        .stroke(Color.blue, style: StrokeStyle(lineWidth: 20, lineCap: .round))
-                        .frame(width: 200, height: 200)
-                        .rotationEffect(.degrees(-90))
-                        .animation(.easeInOut, value: viewModel.progress)
-                    
-                    VStack {
-                        Text("\(Int(viewModel.todaysIntake))")
-                            .font(.system(size: 48, weight: .bold, design: .rounded))
-                            .foregroundColor(.blue)
-                        Text("of \(Int(viewModel.dailyGoal)) oz")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+            List {
+                Section {
+                    VStack(spacing: 20) {
+                        progressRing
+                        quickActions
+                        customInput
                     }
+                    .frame(maxWidth: 500)
+                    .padding(.vertical, 12)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(.top, 20)
-                
-                // Quick Add Buttons
-                HStack(spacing: 16) {
-                    QuickAddButton(amount: 8, viewModel: viewModel)
-                    QuickAddButton(amount: 12, viewModel: viewModel)
-                    QuickAddButton(amount: 16, viewModel: viewModel)
-                }
-                
-                // Custom Amount
-                HStack {
-                    TextField("Custom oz", text: $customAmount)
-                        .keyboardType(.decimalPad)
-                        .textFieldStyle(.roundedBorder)
-                        .frame(width: 120)
-                    
-                    Button("Add") {
-                        if let amount = Double(customAmount), amount > 0 {
-                            viewModel.addWater(amount: amount)
-                            customAmount = ""
-                        }
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .disabled(customAmount.isEmpty)
-                }
-                
-                // Today's Logs
-                if !viewModel.entries.isEmpty {
-                    List {
+                Section("Today’s Log") {
+                    if viewModel.entries.isEmpty {
+                        Text("Add a drink to start today’s log.")
+                            .foregroundStyle(.secondary)
+                    } else {
                         ForEach(viewModel.entries.reversed()) { entry in
-                            HStack {
-                                VStack(alignment: .leading) {
-                                    Text("\(Int(entry.amount)) oz")
-                                        .font(.headline)
-                                    Text(entry.type)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                }
-                                Spacer()
-                                Text(entry.timestamp, style: .time)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                            .swipeActions {
-                                Button(role: .destructive) {
-                                    viewModel.removeEntry(entry)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
+                            logRow(entry)
                         }
                     }
-                    .frame(maxHeight: 300)
-                } else {
-                    Text("No water logged yet today. Start hydrating!")
-                        .foregroundColor(.secondary)
-                        .padding()
                 }
-                
-                Spacer()
             }
-            .padding()
+            .listStyle(.insetGrouped)
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("AquaTrack")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        showingGoalSheet = true
-                    } label: {
-                        Image(systemName: "gear")
-                    }
-                }
+                Button("Settings", systemImage: "gear") { showingGoalSheet = true }
+                    .accessibilityIdentifier("water.settings")
             }
             .sheet(isPresented: $showingGoalSheet) {
                 GoalSettingsView(viewModel: viewModel)
             }
+            .alert("Amount Couldn’t Be Added", isPresented: $showingAmountError) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text("Enter a smaller amount and try again.")
+            }
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { viewModel.refreshDay() }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .NSCalendarDayChanged)) { _ in
+            viewModel.refreshDay()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: .NSSystemTimeZoneDidChange)) { _ in
+            viewModel.refreshDay()
         }
     }
-}
 
-struct QuickAddButton: View {
-    let amount: Double
-    @ObservedObject var viewModel: WaterTrackerViewModel
-    
-    var body: some View {
-        Button {
-            viewModel.addWater(amount: amount)
-        } label: {
-            VStack {
+    private var progressRing: some View {
+        ZStack {
+            Circle().strokeBorder(.blue.opacity(0.14), lineWidth: 14)
+            Circle()
+                .inset(by: 7)
+                .trim(from: 0, to: viewModel.progress)
+                .stroke(.blue.gradient, style: StrokeStyle(lineWidth: 14, lineCap: .round))
+                .rotationEffect(.degrees(-90))
+                .animation(reduceMotion ? nil : .easeInOut, value: viewModel.progress)
+            VStack(spacing: 3) {
                 Image(systemName: "drop.fill")
-                    .font(.title2)
-                Text("+\(Int(amount)) oz")
-                    .font(.caption)
-                    .bold()
+                    .font(.title3)
+                    .foregroundStyle(.blue)
+                    .accessibilityHidden(true)
+                Text(viewModel.todaysIntake, format: .number)
+                    .font(.system(.largeTitle, design: .rounded, weight: .bold))
+                    .accessibilityLabel("\(viewModel.todaysIntake, format: .number) ounces logged today")
+                    .accessibilityIdentifier("water.total")
+                    .lineLimit(1)
+                Text("of \(viewModel.dailyGoal, format: .number) oz")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .accessibilityLabel("Daily goal \(viewModel.dailyGoal, format: .number) ounces")
+                    .accessibilityIdentifier("water.goal")
+                    .lineLimit(1)
             }
-            .frame(width: 80, height: 80)
-            .background(Color.blue.opacity(0.1))
-            .foregroundColor(.blue)
-            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .padding(22)
+            .minimumScaleFactor(0.5)
+        }
+        .frame(width: 185, height: 185)
+    }
+
+    private var quickActions: some View {
+        let layout = typeSize.isAccessibilitySize ? AnyLayout(VStackLayout(spacing: 8)) : AnyLayout(HStackLayout(spacing: 10))
+        return layout {
+            ForEach([8, 12, 16], id: \.self) { amount in
+                Button {
+                    if !viewModel.addWater(amount: Double(amount)) {
+                        showingAmountError = true
+                    }
+                } label: {
+                    Text("+\(amount) oz")
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity, minHeight: 44)
+                        .background(.blue.opacity(0.12), in: RoundedRectangle(cornerRadius: 12))
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(Color.blue)
+                .accessibilityLabel("Add \(amount) ounces")
+                .accessibilityIdentifier("water.add.\(amount)")
+            }
+        }
+    }
+
+    private var customInput: some View {
+        let layout = typeSize.isAccessibilitySize ? AnyLayout(VStackLayout(alignment: .leading, spacing: 8)) : AnyLayout(HStackLayout(spacing: 10))
+        return layout {
+            TextField("Custom amount (oz)", text: $customAmount)
+                .keyboardType(.decimalPad)
+                .textFieldStyle(.roundedBorder)
+                .focused($editingAmount)
+                .accessibilityIdentifier("water.amount")
+
+            Button("Add") {
+                guard let amount else { return }
+                if viewModel.addWater(amount: amount) {
+                    customAmount = ""
+                    editingAmount = false
+                } else {
+                    showingAmountError = true
+                }
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(amount == nil)
+            .accessibilityIdentifier("water.add.custom")
+        }
+    }
+
+    private func logRow(_ entry: WaterEntry) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text("\(entry.amount, format: .number) oz")
+                    .font(.headline)
+                Text(entry.type)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            Text(entry.timestamp, style: .time)
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .swipeActions {
+            Button("Delete", systemImage: "trash", role: .destructive) {
+                viewModel.removeEntry(entry)
+            }
+        }
+        .accessibilityAction(named: Text("Delete Entry")) {
+            viewModel.removeEntry(entry)
         }
     }
 }
 
 struct GoalSettingsView: View {
     @ObservedObject var viewModel: WaterTrackerViewModel
-    @Environment(\.dismiss) var dismiss
-    @State private var goalText: String = ""
-    
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.locale) private var locale
+    @State private var goalText = ""
+
+    private var goal: Double? { WaterTrackerViewModel.parseOunces(goalText, locale: locale) }
+    private var validGoal: Bool { (goal ?? 0) >= WaterTrackerViewModel.minimumGoal }
+
     var body: some View {
         NavigationStack {
             Form {
-                Section("Daily Goal") {
-                    TextField("Goal in ounces", text: $goalText)
+                Section {
+                    TextField("Daily goal in ounces", text: $goalText)
                         .keyboardType(.decimalPad)
-                    Button("Save") {
-                        if let newGoal = Double(goalText) {
-                            viewModel.updateGoal(newGoal)
-                            dismiss()
-                        }
-                    }
-                    .disabled(goalText.isEmpty)
+                        .accessibilityIdentifier("water.goal.input")
+                } header: {
+                    Text("Daily Goal")
+                } footer: {
+                    Text("Enter a goal of at least \(WaterTrackerViewModel.minimumGoal, format: .number) oz.")
                 }
                 Section {
-                    Text("Current goal: \(Int(viewModel.dailyGoal)) oz")
-                        .foregroundColor(.secondary)
+                    Link("Support", destination: URL(string: "https://ai2life.org/support/aquatrack")!)
+                    Link("Privacy Policy", destination: URL(string: "https://ai2life.org/aquatrack/privacy")!)
                 }
             }
             .navigationTitle("Settings")
@@ -162,9 +199,18 @@ struct GoalSettingsView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }
                 }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        guard let goal, validGoal else { return }
+                        viewModel.updateGoal(goal)
+                        dismiss()
+                    }
+                    .disabled(!validGoal)
+                    .accessibilityIdentifier("water.goal.save")
+                }
             }
             .onAppear {
-                goalText = "\(Int(viewModel.dailyGoal))"
+                goalText = viewModel.dailyGoal.formatted(.number.locale(locale).grouping(.never))
             }
         }
     }

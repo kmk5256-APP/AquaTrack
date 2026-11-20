@@ -1,0 +1,523 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		298FD0A5A6DA26F5F139C3D9 /* AquaTrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C1EEA67B4A3421777978161 /* AquaTrackApp.swift */; };
+		478B7E74D97F79E02C5E2D8E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 19BA44AFF8C309E3B90D42C4 /* PrivacyInfo.xcprivacy */; };
+		6F061433F2D381FE3C093147 /* WaterTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176554754F077C1281DDE6F /* WaterTrackerTests.swift */; };
+		75CE7AEB4FCC57C50DD090C7 /* AquaTrackJourneyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1258253213F2242200A70C9B /* AquaTrackJourneyTests.swift */; };
+		7AB2CF4169C9B7BF50B6B8C4 /* WaterTrackerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3CA09B1F7D42A2934DDEAC5 /* WaterTrackerViewModel.swift */; };
+		8CA8AA4409BB70AF5A751687 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A994DEBAEF229F5D34EFEE58 /* Assets.xcassets */; };
+		AF893530A356BAA31C216D14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0403D081C14EFFF6FA4561EB /* ContentView.swift */; };
+		EEA63CCAEF50407AD2C64628 /* WaterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921C8CE9DED055A3F4D087E6 /* WaterEntry.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CAA85715A83F4BF0FA8D1B9E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D8E5CFFE83740283CC8163D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC1005D603943926BE6094F9;
+			remoteInfo = AquaTrack;
+		};
+		FD7716BA7FAFD32E2BD748C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0D8E5CFFE83740283CC8163D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EC1005D603943926BE6094F9;
+			remoteInfo = AquaTrack;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0403D081C14EFFF6FA4561EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1258253213F2242200A70C9B /* AquaTrackJourneyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquaTrackJourneyTests.swift; sourceTree = "<group>"; };
+		19BA44AFF8C309E3B90D42C4 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		1C1EEA67B4A3421777978161 /* AquaTrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AquaTrackApp.swift; sourceTree = "<group>"; };
+		2176554754F077C1281DDE6F /* WaterTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerTests.swift; sourceTree = "<group>"; };
+		921C8CE9DED055A3F4D087E6 /* WaterEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterEntry.swift; sourceTree = "<group>"; };
+		A32DAF2EB6728360D901AB5A /* AquaTrackTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AquaTrackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3CA09B1F7D42A2934DDEAC5 /* WaterTrackerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterTrackerViewModel.swift; sourceTree = "<group>"; };
+		A994DEBAEF229F5D34EFEE58 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B98751F546A58C070150F010 /* AquaTrackUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = AquaTrackUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE69EBA445E257F514B1B9AF /* AquaTrack.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = AquaTrack.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0E4ABA75B149ACAC38A0676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		24F30A7479F013317B3F01AC /* AquaTrackTests */ = {
+			isa = PBXGroup;
+			children = (
+				2176554754F077C1281DDE6F /* WaterTrackerTests.swift */,
+			);
+			path = AquaTrackTests;
+			sourceTree = "<group>";
+		};
+		2DAAA306CF3D2BA590718C6B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE69EBA445E257F514B1B9AF /* AquaTrack.app */,
+				A32DAF2EB6728360D901AB5A /* AquaTrackTests.xctest */,
+				B98751F546A58C070150F010 /* AquaTrackUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0B9D3D8719519533E420FF3 = {
+			isa = PBXGroup;
+			children = (
+				C94414782AC284647A5519E6 /* AquaTrack */,
+				24F30A7479F013317B3F01AC /* AquaTrackTests */,
+				E2B4D50D60E91BE142F29107 /* AquaTrackUITests */,
+				2DAAA306CF3D2BA590718C6B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C94414782AC284647A5519E6 /* AquaTrack */ = {
+			isa = PBXGroup;
+			children = (
+				1C1EEA67B4A3421777978161 /* AquaTrackApp.swift */,
+				A994DEBAEF229F5D34EFEE58 /* Assets.xcassets */,
+				0403D081C14EFFF6FA4561EB /* ContentView.swift */,
+				E0E4ABA75B149ACAC38A0676 /* Info.plist */,
+				19BA44AFF8C309E3B90D42C4 /* PrivacyInfo.xcprivacy */,
+				921C8CE9DED055A3F4D087E6 /* WaterEntry.swift */,
+				A3CA09B1F7D42A2934DDEAC5 /* WaterTrackerViewModel.swift */,
+			);
+			path = AquaTrack;
+			sourceTree = "<group>";
+		};
+		E2B4D50D60E91BE142F29107 /* AquaTrackUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1258253213F2242200A70C9B /* AquaTrackJourneyTests.swift */,
+			);
+			path = AquaTrackUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		609046D756733B1C7ED4201B /* AquaTrackTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5538ED518A161D3F8EBA9C2E /* Build configuration list for PBXNativeTarget "AquaTrackTests" */;
+			buildPhases = (
+				E7894031FD75AA8410249C92 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FD9037AF2B6B1683BBD57E4F /* PBXTargetDependency */,
+			);
+			name = AquaTrackTests;
+			packageProductDependencies = (
+			);
+			productName = AquaTrackTests;
+			productReference = A32DAF2EB6728360D901AB5A /* AquaTrackTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DEF4BF2C7C08AAE9C13B183E /* AquaTrackUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC6B94114FBE15A3702455C6 /* Build configuration list for PBXNativeTarget "AquaTrackUITests" */;
+			buildPhases = (
+				42EACC5EE5F81252C40C9BE3 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B362BA31E57CF18D1B43C1E3 /* PBXTargetDependency */,
+			);
+			name = AquaTrackUITests;
+			packageProductDependencies = (
+			);
+			productName = AquaTrackUITests;
+			productReference = B98751F546A58C070150F010 /* AquaTrackUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		EC1005D603943926BE6094F9 /* AquaTrack */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 110F6482164F358364474B1F /* Build configuration list for PBXNativeTarget "AquaTrack" */;
+			buildPhases = (
+				970896DD2860C59C90FF4692 /* Sources */,
+				6737B545F009684FD12D0FF2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AquaTrack;
+			packageProductDependencies = (
+			);
+			productName = AquaTrack;
+			productReference = CE69EBA445E257F514B1B9AF /* AquaTrack.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0D8E5CFFE83740283CC8163D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					DEF4BF2C7C08AAE9C13B183E = {
+						TestTargetID = EC1005D603943926BE6094F9;
+					};
+					EC1005D603943926BE6094F9 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = D9FCD458987D40B1A6494EE0 /* Build configuration list for PBXProject "AquaTrack" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C0B9D3D8719519533E420FF3;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2DAAA306CF3D2BA590718C6B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EC1005D603943926BE6094F9 /* AquaTrack */,
+				609046D756733B1C7ED4201B /* AquaTrackTests */,
+				DEF4BF2C7C08AAE9C13B183E /* AquaTrackUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6737B545F009684FD12D0FF2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CA8AA4409BB70AF5A751687 /* Assets.xcassets in Resources */,
+				478B7E74D97F79E02C5E2D8E /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		42EACC5EE5F81252C40C9BE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75CE7AEB4FCC57C50DD090C7 /* AquaTrackJourneyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		970896DD2860C59C90FF4692 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				298FD0A5A6DA26F5F139C3D9 /* AquaTrackApp.swift in Sources */,
+				AF893530A356BAA31C216D14 /* ContentView.swift in Sources */,
+				EEA63CCAEF50407AD2C64628 /* WaterEntry.swift in Sources */,
+				7AB2CF4169C9B7BF50B6B8C4 /* WaterTrackerViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7894031FD75AA8410249C92 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F061433F2D381FE3C093147 /* WaterTrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B362BA31E57CF18D1B43C1E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC1005D603943926BE6094F9 /* AquaTrack */;
+			targetProxy = CAA85715A83F4BF0FA8D1B9E /* PBXContainerItemProxy */;
+		};
+		FD9037AF2B6B1683BBD57E4F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EC1005D603943926BE6094F9 /* AquaTrack */;
+			targetProxy = FD7716BA7FAFD32E2BD748C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1A578442C5FC3EF77CB170B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AquaTrack/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ai2life.aquatrack;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2AA58B12180C27EC171C94DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ai2life.aquatrack.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AquaTrack.app/AquaTrack";
+			};
+			name = Debug;
+		};
+		4A298C947F57DDA142C3A9E2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ai2life.aquatrack.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AquaTrack.app/AquaTrack";
+			};
+			name = Release;
+		};
+		6CE045C6A661AE22F1498E5D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7E168B2D8ECB54B165DE3C5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ai2life.aquatrack.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AquaTrack;
+			};
+			name = Release;
+		};
+		89DFE3817FAD40D71BB70F0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		99F4453113A1E1BA0FDE347A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ai2life.aquatrack.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AquaTrack;
+			};
+			name = Debug;
+		};
+		F1658B515688E5B202B4C179 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = AquaTrack/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ai2life.aquatrack;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		110F6482164F358364474B1F /* Build configuration list for PBXNativeTarget "AquaTrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A578442C5FC3EF77CB170B3 /* Debug */,
+				F1658B515688E5B202B4C179 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		5538ED518A161D3F8EBA9C2E /* Build configuration list for PBXNativeTarget "AquaTrackTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AA58B12180C27EC171C94DD /* Debug */,
+				4A298C947F57DDA142C3A9E2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AC6B94114FBE15A3702455C6 /* Build configuration list for PBXNativeTarget "AquaTrackUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99F4453113A1E1BA0FDE347A /* Debug */,
+				7E168B2D8ECB54B165DE3C5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D9FCD458987D40B1A6494EE0 /* Build configuration list for PBXProject "AquaTrack" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				89DFE3817FAD40D71BB70F0A /* Debug */,
+				6CE045C6A661AE22F1498E5D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0D8E5CFFE83740283CC8163D /* Project object */;
+}
