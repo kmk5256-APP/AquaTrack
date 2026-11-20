@@ -6,10 +6,10 @@ struct WaterEntry: Identifiable, Codable {
     let timestamp: Date
     let type: String
     
-    init(amount: Double, type: String = "Water") {
+    init(amount: Double, type: String = "Water", timestamp: Date = .now) {
         self.id = UUID()
         self.amount = amount
-        self.timestamp = Date()
+        self.timestamp = timestamp
         self.type = type
     }
 }
